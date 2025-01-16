@@ -2,8 +2,8 @@ CC = g++
 
 all: ex
 
-clean:
+clean: 
 	rm ex
 
-ex: Prob1.cpp
+ex:
 	g++ Prob1.cpp -o ex
