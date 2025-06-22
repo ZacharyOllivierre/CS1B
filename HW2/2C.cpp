@@ -32,10 +32,13 @@ int main() {
     int numArray[rowSize][columnSize] = {};
 
     // Prompt User to Enter Array Values
-    getData(numArray, rowSize, columnSize);
+    getData(&numArray[0][0], rowSize, columnSize);
+
+    // Clears Terminal
+    system("clear");
 
     // Display Array to User
-    displayArray(numArray, rowSize, columnSize);
+    displayArray(&numArray[0][0], rowSize, columnSize);
 
     return 0;
 }
@@ -57,22 +60,24 @@ int main() {
 // Stores user input in numArray in main through numArrayPtr pointer  
 // =============================================================================
 void getData(int* numArrayPtr, const int rowSize, const int columnSize) {
-    
+    cout << "Enter integers into the 2-Dimensional array:\n\n";
+
     // Iterate over each row in array
     for (int y = 0; y < rowSize; y++) {
 
         // Iterate over each column in each row
         for (int x = 0; x < columnSize; x++) {
             
-            // Prompt user for input at index y,x
+            // Prompt user for input | Access array with pointer arithmetic
             cout << "Enter a number: ";
-            cin >> numArrayPtr[y][x];
+            cin >> numArrayPtr[y * columnSize + x];
         }
         // Seperates input prompts for each row
         cout << endl;
     }
 }
 // ======= End of getData =====================================================
+
 
 // ======= displayArray =============================================================
 // Description:
@@ -88,7 +93,8 @@ void getData(int* numArrayPtr, const int rowSize, const int columnSize) {
 // Displays 2D array as structure suggests (table) 
 // =============================================================================
 void displayArray(int* numArrayPtr, const int rowSize, const int columnSize) {
-    
+    cout << "Here is the data in the 2-Dimensional array:\n\n";
+
     // Iterate over each row in array
     for (int y = 0; y < rowSize; y++) {
         
@@ -96,10 +102,38 @@ void displayArray(int* numArrayPtr, const int rowSize, const int columnSize) {
         for (int x = 0; x < columnSize; x++) {
             
             // Output Value
-            cout << setw(5) << numArray[y][x];
+            cout << setw(5) << numArrayPtr[y * columnSize + x];
         }
         // Endline after every column in row has been displayed
         cout << endl;
     }
 }
 // ======= End of displayArray =====================================================
+
+
+/* ================================== Output ===================================
+Enter integers into the 2-Dimensional array:
+
+Enter a number: 1
+Enter a number: 45
+Enter a number: 765
+Enter a number: 6
+
+Enter a number: 32
+Enter a number: 45
+Enter a number: 789
+Enter a number: 343
+
+Enter a number: 22
+Enter a number: 64
+Enter a number: 12
+Enter a number: 555
+
+---screen clear---
+
+Here is the data in the 2-Dimensional array:
+
+    1   45  765    6
+   32   45  789  343
+   22   64   12  555
+==================================== Output ===================================*/
