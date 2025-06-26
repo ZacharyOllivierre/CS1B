@@ -5,10 +5,12 @@ using namespace std;
 
 int main() {
     
-    Student s1;
+    Student studentOne;
+    Student studentTwo = {12345, "Med Mogasemi", 3.3};
 
-    s1.id = 0;
-    s1.name = "harpy";
+    cout << "Student #1"
+
+
 
     
     return 0;
